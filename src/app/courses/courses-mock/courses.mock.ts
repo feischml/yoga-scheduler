@@ -1,5 +1,19 @@
 import { Course } from '../courses-dto/course';
 
+export const INITIAL_COURSES: Course[] =[{
+    id: 0,
+    name: '',
+    courseDate: new Date(),
+    courseTimeFrom:{
+        hours: 0,
+        minutes: 0
+    },
+    courseTimeTo:{
+        hours: 0,
+        minutes: 0
+    }
+}];
+
 export const COURSES: Course[] = [{
     id: 1,
     name: 'Beginner class',

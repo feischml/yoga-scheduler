@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { Course } from '../courses-dto/course'
-import { COURSES } from '../courses-mock/courses.mock';
+import { COURSES, INITIAL_COURSES } from '../courses-mock/courses.mock';
 
 @Injectable()
 export class CoursesAPI{
@@ -26,6 +27,23 @@ export class CoursesAPI{
                 rej('No course found');
             }
         });
+    }
+
+    public getCoursesObservbable():Observable<Course[]>{
+        return new Observable<Course[]>(observer => {
+            setInterval(() => { 
+                console.log('timer...');
+                const coursesList = [COURSES,INITIAL_COURSES];
+                const random = Math.floor(Math.random() * coursesList.length);
+                observer.next( coursesList[random]);
+            },  1000);
+        });
+        
+        //if (courses != null){
+        //    return courses;
+        //} else {
+        //    return of(INITIAL_COURSES);
+        //}
     }
 
 }
